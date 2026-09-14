@@ -1,0 +1,54 @@
+{
+  "cleanUrls": true,
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), geolocation=(), payment=()"
+        },
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://www.clarity.ms https://scripts.clarity.ms https://connect.facebook.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://{DOMINIO} https://*.supabase.co https://*.googleusercontent.com https://www.google-analytics.com https://www.googletagmanager.com https://www.google.com https://www.google.com.br https://www.google.lt https://*.google.com https://*.google.com.br https://www.clarity.ms https://c.clarity.ms https://www.facebook.com; connect-src 'self' https://*.supabase.co https://www.google-analytics.com https://region1.google-analytics.com https://region1.analytics.google.com https://analytics.google.com https://*.analytics.google.com https://www.google.com https://www.clarity.ms https://c.clarity.ms https://b.clarity.ms https://www.facebook.com https://connect.facebook.net; frame-src https://www.google.com; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; object-src 'none'"
+        }
+      ]
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/certificado/:code",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ],
+  "crons": [
+    {
+      "path": "/api/cron/recover-carts",
+      "schedule": "*/30 * * * *"
+    },
+    {
+      "path": "/api/cron/class-reminders",
+      "schedule": "*/30 * * * *"
+    },
+    {
+      "path": "/api/cron/certificates",
+      "schedule": "0 9 * * *"
+    }
+  ]
+}

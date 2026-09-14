@@ -1,0 +1,43 @@
+{
+  "name": "alpiend",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "vite --host 0.0.0.0",
+    "build": "vite build && node scripts/copy-spa-routes.mjs",
+    "preview": "vite preview --host 0.0.0.0",
+    "validate:agenda": "node scripts/preflight-agenda.mjs",
+    "preflight:agenda": "npm run build && npm run validate:agenda",
+    "test:student-db-isolation": "node scripts-check-student-db-isolation.mjs",
+    "test:pwa": "node scripts-check-pwa.mjs",
+    "test:student-badges": "node scripts-check-student-badges.mjs",
+    "test:student-checkin": "node scripts-check-student-checkin.mjs",
+    "test:student-archive": "node scripts-check-student-archive.mjs",
+    "test:sales-report": "node scripts-check-sales-report.mjs",
+    "test:checkout-upsell": "node scripts-check-checkout-upsell.mjs",
+    "test:certificate": "node scripts-check-certificate.mjs",
+    "test:contract": "node scripts-check-contract-signature.mjs",
+    "test:qrcode": "node scripts-check-qrcode.mjs",
+    "test:class-dates": "node scripts-check-class-dates.mjs",
+    "test:post-purchase": "node scripts-check-post-purchase-flow.mjs",
+    "test:saas-admin": "node scripts-check-saas-admin.mjs",
+    "test:official-layout": "npm run build",
+    "admin:hash": "node scripts-generate-admin-hash.mjs",
+    "test:public-agenda": "node scripts-check-public-agenda.mjs",
+    "test:payment-security": "node scripts-check-payment-security.mjs",
+    "test:admin-rbac": "node scripts-check-admin-rbac.mjs",
+    "test:turma": "node scripts-check-student-class-isolation.mjs",
+    "test:identidade": "node scripts-check-identidade.mjs",
+    "test": "node scripts/roda-testes.mjs"
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "5.1.2",
+    "heic2any": "^0.0.4",
+    "pg": "^8.16.3",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "typescript": "5.9.3",
+    "vite": "7.3.5"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "name": "Minha Área — Área do Aluno",
+  "short_name": "Minha Área",
+  "description": "Cursos, materiais, avisos e certificados da sua jornada a escola.",
+  "start_url": "/aluno",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#f6f0eb",
+  "theme_color": "#2d2926",
+  "icons": [
+    { "src": "/assets/marca/app-icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "/assets/marca/app-icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" },
+    { "src": "/assets/marca/app-icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}
