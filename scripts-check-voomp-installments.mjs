@@ -10,7 +10,7 @@
 // e não lida de um campo que pode divergir dele.
 import assert from 'node:assert/strict';
 import { paymentInfo, voompPaymentSplit } from './src/lib/catalog-helpers.js';
-import { PAGAMENTOS_CABELEIREIRO } from './src/lib/contracts.js';
+import { PAGAMENTOS_COM_CONTRATO } from './src/lib/contracts.js';
 import { fallbackCourses } from './src/catalog.js';
 import { exigeTurmaComContrato } from './scripts/_pendente.mjs';
 import { CLASS_TABLES } from './src/lib/contracts.js';
@@ -24,8 +24,8 @@ const cabeleireiro = fallbackCourses.find((curso) => curso.slug === 'cabeleireir
 assert.ok(cabeleireiro, 'a Formação em Cabeleireiro sumiu do catálogo');
 for (const turma of cabeleireiro.dates) {
   const { enrollmentFee, remainingBalance, priceNumber } = voompPaymentSplit(cabeleireiro, turma);
-  const esperado = Math.round(Math.round(priceNumber * 100) / PAGAMENTOS_CABELEIREIRO) / 100;
-  assert.equal(enrollmentFee, esperado, `${turma}: a inscrição não é o total dividido por ${PAGAMENTOS_CABELEIREIRO}`);
+  const esperado = Math.round(Math.round(priceNumber * 100) / PAGAMENTOS_COM_CONTRATO) / 100;
+  assert.equal(enrollmentFee, esperado, `${turma}: a inscrição não é o total dividido por ${PAGAMENTOS_COM_CONTRATO}`);
   assert.equal(Math.round((enrollmentFee + remainingBalance) * 100), Math.round(priceNumber * 100),
     `${turma}: inscrição + parcelas tem que fechar o valor total`);
   const { featured, featuredSub } = paymentInfo(cabeleireiro, turma);
@@ -74,7 +74,7 @@ console.log('OK  catálogo desatualizado no banco não contamina mais a parcela'
   const helpers = readFileSync('src/lib/catalog-helpers.js', 'utf8');
   const inicio = helpers.indexOf('export function voompPaymentSplit(');
   const corpo = helpers.slice(inicio, helpers.indexOf('export function paymentInfo('));
-  assert.ok(/installmentCents = totalCents \? Math\.round\(totalCents \/ PAGAMENTOS_CABELEIREIRO\)/.test(corpo),
+  assert.ok(/installmentCents = totalCents \? Math\.round\(totalCents \/ PAGAMENTOS_COM_CONTRATO\)/.test(corpo),
     'a parcela precisa continuar sendo derivada do valor total, em centavos');
   assert.ok(!/const enrollmentFee = offer\?\.enrollmentFee/.test(corpo),
     'a parcela voltou a ser lida do catálogo — é assim que ela descola do preço mostrado ao lado');
@@ -88,7 +88,7 @@ console.log('OK  a parcela continua derivada do preço, não copiada do catálog
 {
   const { readFileSync } = await import('node:fs');
   const aceite = readFileSync('api/acceptance.mjs', 'utf8');
-  assert.ok(/Math\.round\(precoTotal \* 100\) \/ PAGAMENTOS_CABELEIREIRO\) \/ 100 : null;/.test(aceite),
+  assert.ok(/Math\.round\(precoTotal \* 100\) \/ PAGAMENTOS_COM_CONTRATO\) \/ 100 : null;/.test(aceite),
     'o aceite precisa derivar a inscrição do valor total dividido pelos 13 pagamentos');
   assert.ok(!/enrollmentFee: variant\?\.enrollmentFee \?\? offer\.course\?\.voomp\?\.enrollmentFee/.test(aceite),
     'o snapshot voltou a ler a matrícula do catálogo, que em produção vem do banco');

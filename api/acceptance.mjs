@@ -4,7 +4,7 @@ import { sendMetaCapiEvent } from '../lib/meta.mjs';
 import { notifyOfficialWhatsapp } from '../lib/whatsapp.mjs';
 import { resolveVoompCheckoutUrl } from '../lib/voomp.mjs';
 import { buildContractSignature } from '../lib/contract-signature.mjs';
-import { CLASS_TABLES, PAGAMENTOS_CABELEIREIRO, contractMoney } from '../src/lib/contracts.js';
+import { CLASS_TABLES, PAGAMENTOS_COM_CONTRATO, contractMoney } from '../src/lib/contracts.js';
 const requiredFields = ['name', 'whatsapp', 'email', 'cpf', 'courseSlug', 'classDate'];
 const requiredAcceptances = ['termsRead', 'paymentAware', 'enrollmentAware'];
 
@@ -127,8 +127,8 @@ export default async function handler(request, response) {
   // produção vem do banco, que fica para trás — e o que a aluna assina não pode depender disso.
   const doContrato = contractMoney(offer.classDate);
   const precoTotal = doContrato?.total ?? variant?.priceNumber ?? offer.priceNumber ?? null;
-  // 13 pagamentos iguais: inscrição na Voomp + 12 parcelas (ver PAGAMENTOS_CABELEIREIRO).
-  const parcela = precoTotal ? Math.round(Math.round(precoTotal * 100) / PAGAMENTOS_CABELEIREIRO) / 100 : null;
+  // Inscrição + parcelas, pagamentos iguais (ver PAGAMENTOS_COM_CONTRATO em src/lib/contracts.js).
+  const parcela = precoTotal ? Math.round(Math.round(precoTotal * 100) / PAGAMENTOS_COM_CONTRATO) / 100 : null;
   const contractSnapshot = {
     courseSlug: offer.courseSlug,
     courseName: offer.courseName,
@@ -145,7 +145,7 @@ export default async function handler(request, response) {
     // Derivado como todo o resto, em vez do texto livre do catálogo: era exatamente esse campo
     // que colocava "Matrícula R$ 508,22" no registro de um aceite da turma Noite.
     installments: parcela != null
-      ? `Inscrição de ${parcela.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })} pela Voomp + ${PAGAMENTOS_CABELEIREIRO - 1}x de ${parcela.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })} sem juros`
+      ? `Inscrição de ${parcela.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })} pela Voomp + ${PAGAMENTOS_COM_CONTRATO - 1}x de ${parcela.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })} sem juros`
       : (variant?.installments || offer.course?.installments || null),
     capturedAt: new Date().toISOString(),
   };

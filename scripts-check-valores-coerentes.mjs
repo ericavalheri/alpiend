@@ -10,7 +10,7 @@
 // confere que TUDO deriva do mesmo total por turma, que é o que impede a divergência de voltar.
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { CLASS_TABLES, PAGAMENTOS_CABELEIREIRO, contractMoney, contractText } from './src/lib/contracts.js';
+import { CLASS_TABLES, PAGAMENTOS_COM_CONTRATO, contractMoney, contractText } from './src/lib/contracts.js';
 import { fallbackCourses } from './src/catalog.js';
 import { voompPaymentSplit, paymentInfo } from './src/lib/catalog-helpers.js';
 import { exigeTurmaComContrato } from './scripts/_pendente.mjs';
@@ -37,8 +37,8 @@ console.log('OK  cada turma do contrato declara o valor como número, não como 
 // R$ 5.457,40 da turma Noite.
 for (const turma of Object.keys(CLASS_TABLES)) {
   const d = contractMoney(turma);
-  assert.equal(Math.round(d.matricula * 100), Math.round(Math.round(d.total * 100) / PAGAMENTOS_CABELEIREIRO),
-    `${turma}: a inscrição não é o total dividido por ${PAGAMENTOS_CABELEIREIRO}`);
+  assert.equal(Math.round(d.matricula * 100), Math.round(Math.round(d.total * 100) / PAGAMENTOS_COM_CONTRATO),
+    `${turma}: a inscrição não é o total dividido por ${PAGAMENTOS_COM_CONTRATO}`);
   assert.equal(Math.round((d.matricula + d.saldo) * 100), Math.round(d.total * 100), `${turma}: inscrição + parcelas não fecha o total`);
   assert.equal(Math.round(d.saldo * 100), Math.round(d.matricula * 100) * d.parcelas,
     `${turma}: as ${d.parcelas} parcelas têm que ter o mesmo valor da inscrição`);
@@ -100,7 +100,7 @@ console.log('OK  site e contrato cobram exatamente o mesmo em todas as turmas');
     const naFrase = centavosDe(installments);
     if (naFrase !== null) {
       // Curso da Voomp: 13 pagamentos iguais. Os demais: 12 parcelas do total.
-      const esperado = /Inscrição/.test(installments) ? Math.round(totalC / PAGAMENTOS_CABELEIREIRO) : Math.round(totalC / 12);
+      const esperado = /Inscrição/.test(installments) ? Math.round(totalC / PAGAMENTOS_COM_CONTRATO) : Math.round(totalC / 12);
       assert.equal(naFrase, esperado, `${rotulo}: "${installments}" não bate com o preço ${precoNumero}`);
     }
     conferidos += 1;
@@ -157,7 +157,7 @@ console.log('OK  as datas do quadro existem e casam com o nome da turma');
     }
   }
   // E o número de parcelas mostrado tem que vir do mesmo lugar que a conta.
-  assert.ok(telas['src/lib/catalog-helpers.js'].includes('PAGAMENTOS_CABELEIREIRO'),
+  assert.ok(telas['src/lib/catalog-helpers.js'].includes('PAGAMENTOS_COM_CONTRATO'),
     'o número de pagamentos precisa vir da constante, não escrito à mão na tela');
 }
 console.log('OK  nenhuma tela descreve a cobrança antiga de 12 parcelas');

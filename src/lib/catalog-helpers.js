@@ -4,7 +4,7 @@
 // Extraído de src/main.jsx (organização de arquivos pedida pela Erica, 05/09/2026).
 import { brand, courseImageBySlug } from './brand.js';
 import { fallbackCourses } from '../catalog.js';
-import { PAGAMENTOS_CABELEIREIRO, contractMoney } from './contracts.js';
+import { PAGAMENTOS_COM_CONTRATO, contractMoney } from './contracts.js';
 import { courses } from './catalog-context.js';
 import { classMonth, classStartDate, isClassDateExpired, money, monthRank, safeSlug, sortDatesChronologically } from './format.js';
 import { getAttribution } from './analytics.js';
@@ -220,12 +220,12 @@ export function voompPaymentSplit(course, date) {
   const offer = selectedOffer(course, date);
   const priceNumber = displayPriceNumber(course, date);
   const totalCents = priceNumber ? Math.round(priceNumber * 100) : null;
-  const installmentCents = totalCents ? Math.round(totalCents / PAGAMENTOS_CABELEIREIRO) : null;
+  const installmentCents = totalCents ? Math.round(totalCents / PAGAMENTOS_COM_CONTRATO) : null;
   const enrollmentFee = installmentCents ? installmentCents / 100 : (offer?.enrollmentFee ?? course.voomp?.enrollmentFee ?? null);
   const remainingBalance = totalCents && installmentCents
     ? (totalCents - installmentCents) / 100
     : (offer?.remainingBalance ?? course.voomp?.remainingBalance ?? null);
-  return { enrollmentFee, remainingBalance, priceNumber, parcelas: PAGAMENTOS_CABELEIREIRO - 1 };
+  return { enrollmentFee, remainingBalance, priceNumber, parcelas: PAGAMENTOS_COM_CONTRATO - 1 };
 }
 
 export function paymentInfo(course, date) {
