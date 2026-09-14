@@ -28,7 +28,7 @@ export const tenant = {
   email: 'cursos@alpiend.com',
   whatsapp: '5513996763931',     // (13) 99676-3931
   whatsappVisivel: '(13) 99676-3931',
-  atendimento: '',               // PREENCHER — horário completo, ex.: 'Segunda a sexta, das 8h às 18h30'
+  atendimento: 'Segunda a sexta, das 7h30 às 18h30',
 
   // --- Endereços na internet ---
   dominio: 'agenda.alpiend.com',
