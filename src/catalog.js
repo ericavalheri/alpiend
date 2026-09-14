@@ -10,6 +10,10 @@ import { tenant } from './lib/tenant.js';
 // pelos cursos de verdade — o exemplo tem `exemplo: true` e o teste de identidade reprova a
 // publicação enquanto ele existir, para ninguém subir o site com curso inventado.
 
+// Padrão pra quando o curso não especifica local próprio. Se a escola tiver mais de uma unidade
+// (endereço, cidade), NÃO deixe os cursos de outra unidade usando este valor por engano — troque
+// o campo `location` de cada curso pelo endereço da unidade certa. O card do curso mostra
+// course.location quando ele existe, e só cai neste padrão se estiver vazio.
 const LOCATION = tenant.local;
 
 export const fallbackCourses = [
@@ -35,7 +39,7 @@ export const fallbackCourses = [
     // --- preço ---
     // O parcelamento mostrado é sempre derivado de priceNumber, nunca escrito à mão: foi assim
     // que o projeto de origem acabou anunciando a parcela de uma turma no preço de outra.
-    location: LOCATION,
+    location: LOCATION,                  // endereço/cidade ONDE ESTE CURSO acontece — troque se a escola tiver mais de uma unidade
     price: 'R$ 1.200,00',
     priceNumber: 1200,
     installments: '12x R$ 100,00 sem juros',

@@ -151,7 +151,7 @@ export function CourseCard({ course, activeMonth }) {
       <h3><a href={`/curso/${course.slug}`}>{course.name}</a></h3>
       <p>{course.promise}</p>
       {classMonth(selectedDate) === 'A confirmar' ? <div className="datePicker datePicker--notice"><span>Turma</span><strong>Datas em negociação pelo atendimento</strong></div> : <label className="datePicker"><span>{course.variants ? 'Escolha a opção' : 'Escolha a turma'}</span><select value={selectedDate} onChange={(event) => setSelectedDate(event.target.value)}>{course.dates.map((date) => <option key={date}>{date}</option>)}</select></label>} {offerDescription(course, selectedDate) && <div className="variantNote">{offerDescription(course, selectedDate)}</div>}
-      <ul className="course__facts"><li>📍 {tenant.localCurto}</li><li>🎟️ {availabilityLabel(course, selectedDate)} de {classCapacity(course, selectedDate)}</li><li>💳 {paymentInfo(course, selectedDate).card}</li><li>🧾 {paymentInfo(course, selectedDate).boleto}</li><li>⚡ {paymentInfo(course, selectedDate).pix}</li></ul>
+      <ul className="course__facts"><li>📍 {course.location || tenant.localCurto}</li><li>🎟️ {availabilityLabel(course, selectedDate)} de {classCapacity(course, selectedDate)}</li><li>💳 {paymentInfo(course, selectedDate).card}</li><li>🧾 {paymentInfo(course, selectedDate).boleto}</li><li>⚡ {paymentInfo(course, selectedDate).pix}</li></ul>
       <div className="course__actions"><a className="button button--primary" href={primaryCta(course, selectedDate).href}>{primaryCta(course, selectedDate).label}</a><a className="button button--light" href={`/curso/${course.slug}?turma=${encodeURIComponent(selectedDate)}`}>Mais informações</a></div>
     </div>
   </article>;
