@@ -110,9 +110,9 @@ export function Header() {
     { label: 'Privacidade', href: '/politica-de-privacidade' },
   ];
   return <header className="siteHeader">
-    <div className="topbar"><span>📍 {tenant.localCurto}</span><span>☎ {tenant.whatsappVisivel}</span><span>✉ {EMAIL}</span></div>
+    <div className="topbar"><span>📍 {tenant.localCurto}</span><span>☎ {tenant.whatsappVisivel}</span><span>✉ {tenant.email}</span></div>
     <div className="navBar">
-      <a className="navBrand" href="/" aria-label="a escola — página inicial"><img src={brand.logo} alt="a escola — Escola de Beleza & Negócios" className="brandLogo" /></a>
+      <a className="navBrand" href="/" aria-label="a escola — página inicial"><img src={brand.logo} alt={`a escola — ${tenant.nomeCompleto}`} className="brandLogo" /></a>
       <nav className="mainNav" aria-label="Menu principal">{navItems.map((item) => <a key={item.label} href={item.href}>{item.label}</a>)}</nav>
       <a className="navCta" href={whatsappLink({ name: 'agenda de cursos' })}>Falar no WhatsApp</a>
     </div>
@@ -123,7 +123,7 @@ export function Footer() {
   return <footer className="ebnFooter">
     <section className="ebnFooter__partners" aria-labelledby="footer-partners-title"><div className="ebnFooter__inner"><div className="ebnFooter__sectionHead"><p className="eyebrow">Parceiros a escola</p><h2 id="footer-partners-title">Marcas que caminham com a nossa formação</h2><p>Uma rede de parceiros que reforça a experiência prática dos alunos dentro da escola.</p></div><div className="ebnFooter__logos">{partnerLogos.map((logo) => <div className="ebnFooter__logoCard" key={logo.src}><img src={logo.src} alt={logo.name} loading="lazy" /></div>)}</div></div></section>
     <section className="ebnFooter__location" aria-labelledby="footer-location-title"><div className="ebnFooter__inner ebnFooter__locationGrid"><div className="ebnFooter__locationCard"><p className="eyebrow">Onde estamos</p><h2 id="footer-location-title">Onde as aulas acontecem</h2><p className="ebnFooter__lead">{tenant.descricao}</p><div className="ebnFooter__infoGrid"><div><span>Endereço</span><strong>{tenant.local}</strong></div><div><span>Atendimento</span><strong>{tenant.atendimento}</strong></div><div><span>Contato</span><strong><a href={`mailto:${tenant.email}`}>{tenant.email}</a></strong></div></div></div><div className="ebnFooter__map"><iframe title={`Mapa — ${tenant.nome}`} loading="lazy" referrerPolicy="no-referrer-when-downgrade" src={`https://www.google.com/maps?q=${encodeURIComponent(tenant.local)}&output=embed`}></iframe><a className="ebnFooter__mapLink" href={tenant.mapa || `https://www.google.com/maps?q=${encodeURIComponent(tenant.local)}`} target="_blank" rel="noreferrer">Abrir no Google Maps</a></div></div></section>
-    <section className="ebnFooter__institutional"><div className="ebnFooter__inner ebnFooter__institutionalGrid"><div className="ebnFooter__brand"><img src={brand.logo} alt="a escola" /><p>Escola de Beleza & Negócios</p></div><div className="ebnFooter__links"><span>Políticas</span><a href="/politica-de-privacidade">Política de Privacidade</a></div><div className="ebnFooter__legal"><span>Dados institucionais</span><p>CNPJ {CNPJ}</p><p>CK & GG - CENTRO DE FORMAÇÃO DE PROFISSIONAIS DE BELEZA LTDA</p></div></div><div className="ebnFooter__credit">Desenvolvido com ❤️ por: Cavalheri Agência WEB</div></section>
+    <section className="ebnFooter__institutional"><div className="ebnFooter__inner ebnFooter__institutionalGrid"><div className="ebnFooter__brand"><img src={brand.logo} alt="a escola" /><p>{tenant.nomeCompleto}</p></div><div className="ebnFooter__links"><span>Políticas</span><a href="/politica-de-privacidade">Política de Privacidade</a></div><div className="ebnFooter__legal"><span>Dados institucionais</span><p>CNPJ {tenant.cnpj}</p><p>{tenant.razaoSocial}</p></div></div><div className="ebnFooter__credit">Desenvolvido com ❤️ por: Cavalheri Agência WEB</div></section>
   </footer>;
 }
 

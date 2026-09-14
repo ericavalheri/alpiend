@@ -9,6 +9,7 @@ import { useEffect, useRef, useState } from 'react';
 import { track, getAttribution } from '../lib/analytics.js';
 import { newMetaEventId } from '../lib/meta-events.js';
 import { postJson } from '../lib/api.js';
+import { tenant } from '../lib/tenant.js';
 
 // Vazio desliga o convite do clube: sem grupo configurado, o modal não aparece.
 export const CLUBE_WHATSAPP_URL = tenant.grupoWhatsapp;

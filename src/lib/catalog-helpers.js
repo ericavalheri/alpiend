@@ -8,6 +8,7 @@ import { PAGAMENTOS_COM_CONTRATO, contractMoney } from './contracts.js';
 import { courses } from './catalog-context.js';
 import { classMonth, classStartDate, isClassDateExpired, money, monthRank, safeSlug, sortDatesChronologically } from './format.js';
 import { getAttribution } from './analytics.js';
+import { tenant } from './tenant.js';
 
 // Capa de curso mora no código: os arquivos estão em public/assets/cursos e trocam por deploy.
 // O catálogo ao vivo (tabela courses do Supabase) guarda uma CÓPIA do campo image dentro de

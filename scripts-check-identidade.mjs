@@ -37,7 +37,10 @@ if (exemplos.length) {
 }
 
 // 6. Nada da escola anterior pode ter sobrado no código.
-const proibidos = ['EBN', 'ebnedu', '51.853.267', 'Gusmão', 'Kamura', 'voompcreators', 'Av. Paulista, 726'];
+const proibidos = [
+  'EBN', 'ebnedu', '51.853.267', 'Gusmão', 'Kamura', 'voompcreators', 'Av. Paulista, 726',
+  'Escola de Beleza', 'CK & GG', 'CENTRO DE FORMAÇÃO DE PROFISSIONAIS DE BELEZA',
+];
 const extensoes = ['.js', '.jsx', '.mjs', '.html', '.json', '.webmanifest', '.md', '.sql', '.css'];
 function varrer(dir) {
   for (const item of readdirSync(dir, { withFileTypes: true })) {

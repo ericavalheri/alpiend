@@ -48,7 +48,7 @@ export function CertificatePage({ code = '' }) {
   if (!state.certificate) {
     return <section className="section certificatePage">
       <div className="certificateStatus certificateStatus--invalid">
-        <p className="eyebrow">a escola — Escola de Beleza &amp; Negócios</p>
+        <p className="eyebrow">a escola — {tenant.nomeCompleto}</p>
         <h1>Certificado não encontrado</h1>
         <p>Nenhum certificado da escola corresponde ao código <strong>{code || '(vazio)'}</strong>. Confira as letras e números com o documento em mãos — o código fica no rodapé.</p>
         <p className="certificateStatus__hint">Se o código está certo e mesmo assim não abre, o documento não foi emitido por esta escola.</p>
@@ -74,7 +74,7 @@ export function CertificatePage({ code = '' }) {
           papel com um quadradinho de foto quebrada porque a hospedagem da logo estava fora. */}
       <header className="certificateSheet__head">
         <span className="certificateSheet__mark">a escola</span>
-        <span>Escola de Beleza &amp; Negócios</span>
+        <span>{tenant.nomeCompleto}</span>
       </header>
 
       <p className="certificateSheet__kicker">Certificado de conclusão</p>
@@ -90,7 +90,7 @@ export function CertificatePage({ code = '' }) {
       <div className="certificateSheet__foot">
         <div className="certificateSheet__sign">
           <span />
-          <strong>a escola — Escola de Beleza &amp; Negócios</strong>
+          <strong>a escola — {tenant.nomeCompleto}</strong>
           <small>{tenant.local}</small>
         </div>
         <div className="certificateSheet__code">
