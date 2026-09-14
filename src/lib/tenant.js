@@ -12,21 +12,21 @@
 export const tenant = {
   // --- Identificação pública ---
   nome: 'Alpiend',
-  nomeCompleto: '',              // PREENCHER — "Alpiend" ou "Alpiend Brasil"? confirmar nome por extenso
+  nomeCompleto: 'Alpiend Alpinismo Industrial', // a confirmar — inferido do site/Instagram (@alpiendalpinismo)
   descricao: 'Centro de treinamento em alpinismo industrial e acesso por corda em Praia Grande/SP, com instrutores certificados IRATA.',
 
   // --- Identificação jurídica (vai para o contrato assinado, se houver) ---
-  razaoSocial: '',               // PREENCHER — razão social exata, como no cartão CNPJ
-  cnpj: '',                      // PREENCHER — formato 00.000.000/0001-00
-  enderecoCompleto: 'Rua Joséfa Alves de Siqueira, 509 — Anhanguera, Praia Grande/SP, 11718-000',
+  razaoSocial: 'Alpiend Inspeção e Manutenção Industrial Ltda - ME',
+  cnpj: '17.212.562/0001-00',
+  enderecoCompleto: 'Rua Josefa Alves de Siqueira, 509 — Jardim Anhanguera, Praia Grande/SP, CEP 11.718-000',
 
   // --- Onde as aulas acontecem (aparece nos cards e no contrato) ---
-  local: 'Rua Joséfa Alves de Siqueira, 509 — Anhanguera, Praia Grande/SP, 11718-000',
-  localCurto: 'Anhanguera, Praia Grande/SP',
+  local: 'Rua Josefa Alves de Siqueira, 509 — Jardim Anhanguera, Praia Grande/SP, CEP 11.718-000',
+  localCurto: 'Jardim Anhanguera, Praia Grande/SP',
 
   // --- Contato ---
-  email: '',                     // PREENCHER — e-mail de atendimento
-  whatsapp: '5513996763931',     // (13) 99676-3931, do perfil do Google
+  email: 'cursos@alpiend.com',
+  whatsapp: '5513996763931',     // (13) 99676-3931
   whatsappVisivel: '(13) 99676-3931',
   atendimento: '',               // PREENCHER — horário completo, ex.: 'Segunda a sexta, das 8h às 18h30'
 
