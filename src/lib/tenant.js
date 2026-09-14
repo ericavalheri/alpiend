@@ -11,34 +11,34 @@
 
 export const tenant = {
   // --- Identificação pública ---
-  nome: '',                      // PREENCHER — nome curto, como aparece no site. Ex.: 'Studio Bella'
-  nomeCompleto: '',              // PREENCHER — nome por extenso, para títulos e e-mails
-  descricao: '',                 // PREENCHER — uma linha sobre a escola, usada em meta tags
+  nome: 'Alpiend',
+  nomeCompleto: '',              // PREENCHER — "Alpiend" ou "Alpiend Brasil"? confirmar nome por extenso
+  descricao: 'Centro de treinamento em alpinismo industrial e acesso por corda em Praia Grande/SP, com instrutores certificados IRATA.',
 
-  // --- Identificação jurídica (vai para o contrato assinado) ---
+  // --- Identificação jurídica (vai para o contrato assinado, se houver) ---
   razaoSocial: '',               // PREENCHER — razão social exata, como no cartão CNPJ
   cnpj: '',                      // PREENCHER — formato 00.000.000/0001-00
-  enderecoCompleto: '',          // PREENCHER — endereço da sede, com CEP
+  enderecoCompleto: 'Rua Joséfa Alves de Siqueira, 509 — Anhanguera, Praia Grande/SP, 11718-000',
 
   // --- Onde as aulas acontecem (aparece nos cards e no contrato) ---
-  local: '',                     // PREENCHER — endereço resumido. Ex.: 'Rua X, 100 — Centro, Cidade/UF'
-  localCurto: '',                // PREENCHER — versão curta para o card. Ex.: 'Rua X, 100 — Centro'
+  local: 'Rua Joséfa Alves de Siqueira, 509 — Anhanguera, Praia Grande/SP, 11718-000',
+  localCurto: 'Anhanguera, Praia Grande/SP',
 
   // --- Contato ---
   email: '',                     // PREENCHER — e-mail de atendimento
-  whatsapp: '',                  // PREENCHER — só dígitos, com 55 e DDD. Ex.: '5511999999999'
-  whatsappVisivel: '',           // PREENCHER — como aparece na tela. Ex.: '(11) 99999-9999'
-  atendimento: '',               // PREENCHER — Ex.: 'Segunda a sexta, das 10h às 18h'
+  whatsapp: '5513996763931',     // (13) 99676-3931, do perfil do Google
+  whatsappVisivel: '(13) 99676-3931',
+  atendimento: '',               // PREENCHER — horário completo, ex.: 'Segunda a sexta, das 8h às 18h30'
 
   // --- Endereços na internet ---
-  dominio: '',                   // PREENCHER — domínio da agenda, sem https. Ex.: 'agenda.escola.com.br'
-  site: '',                      // PREENCHER — site institucional, se houver
-  instagram: '',                 // opcional — URL completa
+  dominio: 'agenda.alpiend.com',
+  site: 'alpiend.com',
+  instagram: 'https://www.instagram.com/alpiendalpinismo/',
   mapa: '',                      // opcional — link do Google Maps
 
   // --- Grupo de captação (deixe vazio se a escola não tiver) ---
   grupoWhatsapp: '',             // opcional — link de convite do grupo
-  nomeDoClube: '',               // opcional — como o grupo é chamado na tela. Ex.: 'Clube Studio Bella'
+  nomeDoClube: '',               // opcional — como o grupo é chamado na tela. Ex.: 'Clube Alpiend'
 };
 
 // A escola já tem tudo o que o sistema precisa para funcionar?
