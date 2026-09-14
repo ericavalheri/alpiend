@@ -4,7 +4,7 @@
 // então nada quebra enquanto o material não chega — mas o site fica sem identidade visual.
 
 export const brand = {
-  logo: '',      // PREENCHER — logo do cabeçalho. Suba em public/assets/marca/ e aponte aqui
+  logo: '/assets/marca/logo-alpiend.png',
   school: '',    // opcional — foto da escola, usada na home
   school2: '',   // opcional
   school3: '',   // opcional

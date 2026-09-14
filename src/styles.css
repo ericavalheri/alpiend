@@ -1,22 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Montserrat:wght@600;700;800&family=Open+Sans:wght@400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap');
 
 :root {
-  --orange: #f99048;
-  /* Laranja dos botões (pedido da Erica, 07/09/2026): o #f99048 com texto branco em cima dá
-     2,3:1 de contraste e some no sol. Este tom mais fundo — que já era o --orange-dark do
-     projeto — sobe pra 4,45:1. Vale só onde há texto branco sobre laranja: títulos, ícones,
-     barras de progresso e selos seguem no laranja original. */
-  --orange-button: #b45c1f;
-  --sage: #a39d8b;
-  --sage-dark: #6f6b5f;
-  --graphite: #3f444b;
-  --taupe: #b58d72;
+  /* Paleta da Alpiend (extraída do logo oficial): dourado #F9CA49, grafite #393F3F, cinza
+     #6E757A. Dourado tem contraste ruim com texto branco em cima (1,55:1) — pior ainda que o
+     laranja anterior — então nada de texto branco direto sobre --orange. Onde precisa de fundo
+     escuro com texto branco (botão primário, badges, ícones em círculo), usa --orange-button
+     (grafite, 10,7:1 de contraste) — mesma regra que já existia aqui, só troquei o tom. */
+  --orange: #f9ca49;
+  --orange-button: #393f3f;
+  --sage: #6e757a;
+  --sage-dark: #4b5255;
+  --graphite: #393f3f;
   --paper: #ffffff;
-  --soft: #f7f4ee;
+  --soft: #f5f6f7;
   --text: #333333;
-  --muted: #787061;
-  --line: rgba(63, 68, 75, .14);
-  --shadow: 0 20px 60px rgba(63, 68, 75, .12);
+  --muted: #6b7176;
+  --line: rgba(57, 63, 63, .14);
+  --shadow: 0 20px 60px rgba(57, 63, 63, .12);
   --radius: 24px;
   font-family: 'Poppins', 'Open Sans', sans-serif;
   color: var(--text);
@@ -31,7 +31,7 @@ a { color: inherit; text-decoration: none; }
 img { display: block; max-width: 100%; }
 
 .topbar {
-  background: var(--orange);
+  background: var(--orange-button);
   color: #fff;
   min-height: 40px;
   display: flex;
@@ -208,7 +208,7 @@ h3 {
   position: absolute;
   top: 12px;
   left: 12px;
-  background: var(--orange);
+  background: var(--orange-button);
   color: #fff;
   border-radius: 999px;
   padding: 8px 12px;
@@ -1015,7 +1015,7 @@ h3 {
   height: 34px;
   border-radius: 50%;
   color: #fff;
-  background: var(--orange);
+  background: var(--orange-button);
   font-family: 'Montserrat', sans-serif;
 }
 .voompFlow__grid span { color: var(--graphite); font-weight: 700; }
@@ -1046,7 +1046,7 @@ h3 {
 .carouselArrow:hover:not(:disabled),
 .carouselArrow:focus-visible:not(:disabled) {
   transform: translateY(-50%) scale(1.06);
-  background: var(--orange);
+  background: var(--orange-button);
   color: #fff;
   outline: none;
 }
@@ -1931,7 +1931,7 @@ h3 {
   gap: 8px;
   padding: 24px;
   border-radius: 28px;
-  background: linear-gradient(135deg, var(--orange), #d78338);
+  background: linear-gradient(135deg, var(--orange-button), #2b2f2f);
   color: #fff;
 }
 .adminHeroCard span,
@@ -3248,9 +3248,9 @@ h3 {
   cursor: pointer;
 }
 .crmViewToggle__button--active {
-  background: var(--orange);
+  background: var(--orange-button);
   color: #fff;
-  box-shadow: 0 10px 22px rgba(236,145,76,.28);
+  box-shadow: 0 10px 22px rgba(249,202,73,.28);
 }
 .crmKanban {
   display: grid;
@@ -3414,7 +3414,7 @@ h3 {
   display: block;
   height: 100%;
   border-radius: inherit;
-  background: linear-gradient(90deg, var(--orange), #f2b178);
+  background: linear-gradient(90deg, var(--orange), #fbe28c);
 }
 .salesStatusChart {
   height: 190px;
@@ -3526,7 +3526,7 @@ h3 {
   justify-content: center;
   gap: 22px;
   padding: 7px max(16px, calc((100vw - 1180px) / 2));
-  background: linear-gradient(90deg, var(--orange), #d78338);
+  background: var(--orange-button);
   color: #fff;
   font-size: .78rem;
   line-height: 1.25;
@@ -3900,7 +3900,7 @@ h3 {
   right: 0;
   top: 0;
   height: 72px;
-  background: linear-gradient(90deg, #ef9853, var(--orange));
+  background: linear-gradient(90deg, #f7c235, var(--orange));
   opacity: .96;
 }
 .agendaSnapshot__calendarTop span {
@@ -4287,7 +4287,7 @@ h3 {
   font-size: .78rem;
 }
 .crmQuickActions .linkButton--primary {
-  background: var(--orange);
+  background: var(--orange-button);
   color: #fff;
   border-color: transparent;
 }
@@ -4312,12 +4312,10 @@ h3 {
   .crmKanban { grid-auto-columns: minmax(270px, 88vw); }
 }
 
-/* EBN agenda color refinement + active month contrast fix */
+/* Acento de hover: dourado escurecido, 6,25:1 de contraste com branco/fundo claro nos dois
+   sentidos (funciona como texto sobre fundo claro e como fundo com texto branco em cima). */
 :root {
-  --orange-dark: #b95f21;
-  --ebn-charcoal: #3f444b;
-  --ebn-warm-gray: #6f6b5f;
-  --ebn-cream: #f7f4ee;
+  --orange-dark: #7a5c00;
 }
 .agendaSnapshot {
   background: linear-gradient(180deg, #484d54 0%, #3f444b 58%, #6f6b5f 100%);
